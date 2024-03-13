@@ -8,11 +8,13 @@
 		<version>2.7.9</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
+
 	<groupId>com.myexpenses</groupId>
 	<artifactId>spring-boot-myexpenses</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-boot-myexpenses</name>
 	<description>spring boot project to track my expenses</description>
+
 	<properties>
 		<java.version>11</java.version>
 	</properties>
