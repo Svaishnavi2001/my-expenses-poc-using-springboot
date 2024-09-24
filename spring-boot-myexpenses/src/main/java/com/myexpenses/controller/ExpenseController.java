@@ -16,13 +16,18 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @GetMapping
+    @GetMapping("/getAllExpense")
     public List<Expense> getAllExpense(){
         log.info("Inside ExpenseController: getAllExpense");
-        return expenseService.getAllExpenses();
+        return expenseService.getAllExpensesLessThanFiveHundred();
     }
 
-    @PostMapping
+    @GetMapping("/{id}")
+    public Expense getExpenseById(@PathVariable Integer id){
+        log.info("Inside ExpenseController: getExpenseById");
+        return expenseService.getExpenseById(id);
+    }
+    @PostMapping("/addExpense")
     public Expense addExpense(@RequestBody Expense expense){
         log.info("Inside ExpenseController: addExpense");
         return expenseService.addExpense(expense);

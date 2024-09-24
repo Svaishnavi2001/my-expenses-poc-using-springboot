@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Slf4j
 @Service
@@ -16,7 +17,7 @@ public class ExpenseService {
     @Autowired
     private ExpenseRepository expenseRepository;
 
-    public List<Expense> getAllExpenses(){
+    public List<Expense> getAllExpensesLessThanFiveHundred(){
         log.info("Inside ExpenseService: getAllExpense");
         //getting all Expense from database
         List<Expense> expenseList = expenseRepository.findAll();
@@ -31,6 +32,18 @@ public class ExpenseService {
 
         return result;
     }
+
+    public Expense getExpenseById(Integer id){
+        log.info("Inside ExpenseService: getAllExpense");
+        //getting all Expense from database
+        Expense expense = null;
+        Optional<Expense> optionalExpense = expenseRepository.findById(id);
+        if(optionalExpense.isPresent()){
+             expense = optionalExpense.get();
+        }
+        return expense;
+    }
+
 
     public  Expense addExpense(Expense expense){
         log.info("Inside ExpenseService: addExpense");
