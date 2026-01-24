@@ -17,7 +17,11 @@ public class ExpenseService {
     @Autowired
     private ExpenseRepository expenseRepository;
 
-    public List<Expense> getAllExpensesLessThanFiveHundred(){
+    public List<Expense> getAllExpenses(){
+        return expenseRepository.findAll();
+    }
+
+    public List<Expense> getExpensesLessThanFiveHundred(){
         log.info("Inside ExpenseService: getAllExpense");
         //getting all Expense from database
         List<Expense> expenseList = expenseRepository.findAll();
@@ -34,7 +38,7 @@ public class ExpenseService {
     }
 
     public Expense getExpenseById(Integer id){
-        log.info("Inside ExpenseService: getAllExpense");
+        log.info("Inside ExpenseService: getExpenseById");
         //getting all Expense from database
         Expense expense = null;
         Optional<Expense> optionalExpense = expenseRepository.findById(id);
