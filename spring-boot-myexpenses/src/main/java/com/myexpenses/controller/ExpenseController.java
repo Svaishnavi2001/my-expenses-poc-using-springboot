@@ -15,13 +15,14 @@ public class ExpenseController {
     @Autowired
     private ExpenseService expenseService;
 
-    @GetMapping()
+    @GetMapping("/getAllExpenses")
     public List<Expense> getAllExpenses(){
+        log.info("Inside ExpenseController: getAllExpense");
         return expenseService.getAllExpenses();
 
     }
 
-    @GetMapping("/getAllExpense")
+    @GetMapping("/getAllExpense<500")
     public List<Expense> getAllExpenseLessThanFiveHundred(){
         log.info("Inside ExpenseController: getAllExpense");
         return expenseService.getExpensesLessThanFiveHundred();
@@ -45,7 +46,8 @@ public class ExpenseController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteExpense(@PathVariable Integer id ){
+    public void deleteExpense(@PathVariable Integer id )
+    {
         expenseService.deleteExpense(id);
     }
 }
